@@ -1,9 +1,12 @@
-.venv\
+.venv
 
-.vscode\
+.vscode
 
-.idea\
+.idea
 
-__pycache__\
+__pycache__
 
 *.pyc
+
+anki-tutorial
+

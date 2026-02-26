@@ -9,7 +9,7 @@ from aqt.utils import showInfo, qconnect
 # import all of the Qt GUI library
 from aqt.qt import *
 
-def _copy_current_card_fields() -> None:
+def copy_current_card_fields() -> None:
     reviewer = mw.reviewer
     card = reviewer.card if reviewer else None
     if not card:

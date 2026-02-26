@@ -10,8 +10,9 @@ from aqt.utils import showInfo, qconnect
 from aqt.qt import *
 
 # import the function that we designed
-from .copy_to_clipboard import _copy_current_card_fields
-from .expand_example_sentences import _expand_sample_sentences, _delete_expanded_sentences
+from .copy_to_clipboard import copy_current_card_fields
+from .expand_example_sentences import expand_sample_sentences, delete_expanded_sentences
+from ._ai import enter_api_key
 
 
 # separator
@@ -19,9 +20,9 @@ separator = QAction(mw)
 separator.setSeparator(True)
 mw.form.menuTools.addAction(separator)
 
-# _copy_current_card_fields
+# copy_current_card_fields
 action = QAction("Copy Details", mw)
-qconnect(action.triggered, _copy_current_card_fields)
+qconnect(action.triggered, copy_current_card_fields)
 mw.form.menuTools.addAction(action)
 
 # = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
@@ -31,14 +32,19 @@ separator = QAction(mw)
 separator.setSeparator(True)
 mw.form.menuTools.addAction(separator)
 
-# _expand_sample_sentences
+# enter API key
+api_key_action = QAction("Enter API Key", mw)
+qconnect(api_key_action.triggered, enter_api_key)
+mw.form.menuTools.addAction(api_key_action)
+
+# expand_sample_sentences
 expand_action = QAction("Expand Sample Sentences", mw)
-qconnect(expand_action.triggered, _expand_sample_sentences)
+qconnect(expand_action.triggered, expand_sample_sentences)
 mw.form.menuTools.addAction(expand_action)
 
-# _delete_expanded_sentences
+# delete_expanded_sentences
 delete_action = QAction("Delete Expanded Sentences", mw)
-qconnect(delete_action.triggered, _delete_expanded_sentences)
+qconnect(delete_action.triggered, delete_expanded_sentences)
 mw.form.menuTools.addAction(delete_action)
 
 

@@ -13,6 +13,7 @@ from aqt.qt import *
 from .copy_to_clipboard import copy_current_card_fields
 from .expand_example_sentences import expand_sample_sentences, delete_expanded_sentences
 from ._ai import enter_api_key
+from .generate_passages import get_ai_prompt
 
 
 # separator
@@ -47,7 +48,15 @@ delete_action = QAction("Delete Expanded Sentences", mw)
 qconnect(delete_action.triggered, delete_expanded_sentences)
 mw.form.menuTools.addAction(delete_action)
 
+# = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
+# separator
+separator = QAction(mw)
+separator.setSeparator(True)
+mw.form.menuTools.addAction(separator)
 
-
+# get ai prompt to generate passage
+get_ai_prompt_action = QAction("Get Prompt to Generate Passage", mw)
+qconnect(get_ai_prompt_action.triggered, get_ai_prompt)
+mw.form.menuTools.addAction(get_ai_prompt_action)
 

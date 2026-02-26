@@ -11,22 +11,7 @@ from aqt.qt import *
 
 from . import _ai
 
-# recognizable dictionaries
-EGGROLLS_JLPT10K_V3 = "eggrolls-JLPT10k-v3"
-LAN_BAO_SHU_CHAO_ZHI_BAI_JIN_BAN = "蓝宝书超值白金版"
-
-def _recognize_dictionary(card) -> str | None:
-    """
-    识别卡片所属的词典。
-    通过检查卡片的标签来确定它属于哪个词典。
-    """
-    tags = card.note().tags
-    for tag in tags:
-        if EGGROLLS_JLPT10K_V3 in tag:
-            return EGGROLLS_JLPT10K_V3
-        elif LAN_BAO_SHU_CHAO_ZHI_BAI_JIN_BAN in tag:
-            return LAN_BAO_SHU_CHAO_ZHI_BAI_JIN_BAN
-    return None
+from .recognize_dictionary import *
 
 
 def expand_sample_sentences() -> None:
@@ -53,7 +38,7 @@ def expand_sample_sentences() -> None:
     note = card.note()
 
     # 识别当前卡片是来源于哪个词典
-    dictionary = _recognize_dictionary(card)
+    dictionary = recognize_dictionary(card)
 
     if dictionary is None:
         tooltip("The current card does not belong to a recognized dictionary.")
@@ -166,7 +151,7 @@ def delete_expanded_sentences() -> None:
     note = card.note()
 
     # 识别当前卡片是来源于哪个词典
-    dictionary = _recognize_dictionary(card)
+    dictionary = recognize_dictionary(card)
 
     if dictionary is None:
         tooltip("The current card does not belong to a recognized dictionary.")

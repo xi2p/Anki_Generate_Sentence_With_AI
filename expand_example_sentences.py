@@ -125,7 +125,7 @@ def expand_sample_sentences() -> None:
             example_n = "Example{}".format(n)
             chinese_n = "Chinese{}".format(n)
 
-            note[example_n] = "(AI例)" + ai_generated_sentences[index][0]
+            note[example_n] = "(AI例) " + ai_generated_sentences[index][0]
             note[chinese_n] = ai_generated_sentences[index][1]
 
             index += 1

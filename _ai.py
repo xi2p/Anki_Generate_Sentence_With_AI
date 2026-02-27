@@ -58,7 +58,8 @@ def generate_example_sentences(system_prompt: str, word_description: str) -> dic
                 'content': word_description
             }
         ],
-        stream=False
+        stream=False,
+        temperature=1.3,        # recommended value for Translation	is 1.3
     )
 
     return json.loads(response.choices[0].message.content)

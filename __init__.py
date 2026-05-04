@@ -11,7 +11,7 @@ from aqt.qt import *
 
 # import the function that we designed
 from .copy_to_clipboard import copy_current_card_fields
-from .expand_example_sentences import expand_sample_sentences, delete_expanded_sentences
+from .expand_example_sentences import expand_sample_sentences, expand_sample_sentences_manual, delete_expanded_sentences
 from ._ai import enter_api_key
 from .generate_passages import get_ai_prompt
 
@@ -42,6 +42,10 @@ mw.form.menuTools.addAction(api_key_action)
 expand_action = QAction("Expand Sample Sentences", mw)
 qconnect(expand_action.triggered, expand_sample_sentences)
 mw.form.menuTools.addAction(expand_action)
+
+expand_manual_action = QAction("(Manual) Expand Sample Sentences", mw)
+qconnect(expand_manual_action.triggered, expand_sample_sentences_manual)
+mw.form.menuTools.addAction(expand_manual_action)
 
 # delete_expanded_sentences
 delete_action = QAction("Delete Expanded Sentences", mw)

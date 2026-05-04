@@ -17,10 +17,6 @@ def enter_api_key():
 #     enter_api_key()
 
 
-
-
-
-
 def generate_example_sentences(system_prompt: str, word_description: str) -> dict:
     """
     为当前卡片的单词生成例句数据。
@@ -47,7 +43,7 @@ def generate_example_sentences(system_prompt: str, word_description: str) -> dic
     )
 
     response = client.chat.completions.create(
-        model="deepseek-chat", # ModelScope Model-Id
+        model="deepseek-v4-pro", 
         messages=[
             {
                 'role': 'system',
@@ -61,5 +57,8 @@ def generate_example_sentences(system_prompt: str, word_description: str) -> dic
         stream=False,
         temperature=1.3,        # recommended value for Translation	is 1.3
     )
+    print("AI Response >>>")
+    print(response.choices[0].message.content)
+    print("<<<")
 
     return json.loads(response.choices[0].message.content)
